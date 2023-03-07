@@ -21,12 +21,16 @@ def problem2_4(message):
     prices = get_prices_input(message)
     mostExpensivePrice = 0
 
+    for i in prices:
+        if i > mostExpensivePrice:
+            mostExpensivePrice = i
+
     return str(mostExpensivePrice)
 
 
 def problem2_5(message):
     prices = get_prices_input(message)
-    totalCost = 0
+    totalCost = sum(prices)
 
 
     return str(totalCost)
@@ -36,5 +40,11 @@ def problem2_6(message):
     prices = get_prices_input(message)
     totalCost = 0
 
-
+    total_amount = sum(prices)
+    totalCost = total_amount * 11.04
+    totalCost = math.ceil(totalCost)
+        
     return str(totalCost)
+
+
+print(problem2_6(''))
