@@ -28,12 +28,25 @@ def weather(message):
 
     # 3.3 doesn't really introcude any new concepts. You're on your own!
 
+    user_input = input("Enter something: ")
+    splitted_input = user_input.split(' ')
+    print(splitted_input)
+
+    if splitted_input[1] == "Oslo":
+        lat = 59.913868
+        lon = 10.752245
+    elif splitted_input[1] == "London":
+        lat = 51.507351
+        lon = -0.127758
+    elif splitted_input[1] == "Galway":
+        lat = 53.270668
+        lon = -9.056790
 
     date_now = (datetime.now() - timedelta(days=-1)).strftime('%Y-%m-%d')
     daily_params = ['temperature_2m_max', 'rain_sum', 'windspeed_10m_max']
     params = {
-        'latitude': 53.27,  # You need to update this
-        'longitude': -9.05, # ... and this
+        'latitude': lat,  # You need to update this
+        'longitude': lon, # ... and this
         'start_date': date_now,
         'end_date': date_now,
         'timezone': 'GMT',
@@ -41,7 +54,7 @@ def weather(message):
     }
 
     # This makes a request to the weather API with the above info.
-    response = requests.get('https://api.open-meteo.com/v1/forecast', params=params).json()
+    response = requests.get('https://api.open-meteo.com/v1/forecast';, params=params).json()
 
     # Let's print the response. Look out for this in your terminal, you'll need to pull
     # out the bits of information that are relevant to the command used.
@@ -50,19 +63,15 @@ def weather(message):
     # This is a placeholder response to show how to drill into the info that you're interested in.
     #return response['daily']['time'][0]
 
-    user_input = input("Enter something: ")
-    splitted_input = user_input.split(' ')
-    print(splitted_input)
+  
     
     if splitted_input[0] == "weather":
         message1 = "Yesterday, in " + splitted_input[1] + " , the highest temperature recorded was " + str(response['daily']['temperature_2m_max'][0]) +  " degrees celsius."
 
-        switch(splitted_input[1])
-        case "Oslo":
+        
+       
 
-
-        default:
-            print("test")
+       
         
     else:
         message1 = " "
