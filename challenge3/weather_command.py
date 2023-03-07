@@ -28,11 +28,12 @@ def weather(message):
 
     # 3.3 doesn't really introcude any new concepts. You're on your own!
 
+
     date_now = (datetime.now() - timedelta(days=-1)).strftime('%Y-%m-%d')
     daily_params = ['temperature_2m_max', 'rain_sum', 'windspeed_10m_max']
     params = {
-        'latitude': 0,  # You need to update this
-        'longitude': 0, # ... and this
+        'latitude': 53.27,  # You need to update this
+        'longitude': -9.05, # ... and this
         'start_date': date_now,
         'end_date': date_now,
         'timezone': 'GMT',
@@ -44,7 +45,27 @@ def weather(message):
 
     # Let's print the response. Look out for this in your terminal, you'll need to pull
     # out the bits of information that are relevant to the command used.
-    print(json.dumps(response, indent=4))
+    #print(json.dumps(response, indent=4))
 
     # This is a placeholder response to show how to drill into the info that you're interested in.
-    return response['daily']['time'][0]
+    #return response['daily']['time'][0]
+
+    user_input = input("Enter something: ")
+    splitted_input = user_input.split(' ')
+    print(splitted_input)
+    
+    if splitted_input[0] == "weather":
+        message1 = "Yesterday, in " + splitted_input[1] + " , the highest temperature recorded was " + str(response['daily']['temperature_2m_max'][0]) +  " degrees celsius."
+
+        switch(splitted_input[1])
+        case "Oslo":
+
+
+        default:
+            print("test")
+        
+    else:
+        message1 = " "
+
+
+    return message1
