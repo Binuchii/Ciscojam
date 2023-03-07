@@ -21,7 +21,10 @@ def get_all_employees_input(message):
 def problem2_1(message):
     all_employees = get_all_employees_input(message)
     beginsWithLetterCCount = 0
-
+    
+    for i in all_employees:
+        if i.startswith('C') or i.startswith('c'):
+            beginsWithLetterCCount += 1
 
     return str(beginsWithLetterCCount)
 
@@ -31,6 +34,10 @@ def problem2_2(message):
     peopleWithLongerThan8CharacterLastnamesCount = 0
 
 
+    for i in all_employees:
+        i = i.split(' ')
+        if len(i[1]) >= 8:
+            peopleWithLongerThan8CharacterLastnamesCount += 1
     return str(peopleWithLongerThan8CharacterLastnamesCount)
 
 
@@ -38,5 +45,19 @@ def problem2_3(message):
     all_employees = get_all_employees_input(message)
     employeesWhoWillGetBonusesCount = 0
 
+    symbol_array = ['ẞ', 'ö', 'æ', 'ç']
 
+    for i in symbol_array:
+        for index, x in enumerate(all_employees):
+            if i in x or i.upper() in x:
+                
+                #print(x)
+                employeesWhoWillGetBonusesCount += 1
+
+                all_employees.pop(index)
+                
+        
     return str(employeesWhoWillGetBonusesCount)
+
+
+print(problem2_3(''))
